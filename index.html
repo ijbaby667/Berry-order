@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loveberry | Home</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      Loveberry
+      <div class="tagline">Fresh, Flavourful, Fabulous</div>
+    </div>
+    <nav>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        ☰
+      </button>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html" class="active">Menu</a></li>
+        <li><a href="order.html">Order</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+ 
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Welcome to Loveberry</h1>
+      <p>Premium Nigerian Cuisine, Crafted with Love</p>
+      <a href="menu.html" class="btn">Explore Menu</a>
+    </div>
+  </section>
+
+  <section class="intro">
+    <h2>Experience the Taste of Tradition</h2>
+    <p>At Loveberry, we bring you mouth-watering Nigerian delicacies made <br>
+       with passion, precision, and fresh ingredients. <br>
+        Whether you're craving Jollof Rice or Egusi Soup, we’ve got you covered.</p>
+  </section>
+
+  <section class="highlights">
+    <h2>Customer Favourites</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <h3>Jollof Rice & Chicken</h3>
+        <p>Spiced tomato rice with grilled chicken and fried plantains</p>
+        <span class="price">₦3,000</span>
+      </div>
+      <div class="menu-item">
+        <h3>Egusi Soup & Pounded Yam</h3>
+        <p>Rich melon seed soup with assorted meats and fluffy yam</p>
+        <span class="price">₦4,500</span>
+      </div>
+      <div class="menu-item">
+        <h3>Ofada Rice & Ayamase</h3>
+        <p>Local rice served with spicy green pepper stew</p>
+        <span class="price">₦3,800</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Loveberry Restaurant. Naija to the world!</p>
+  </footer>
+
+  <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('nav ul');
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+    });
+  </script>
+</body>
+</html>

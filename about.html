@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loveberry | About</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      Loveberry
+      <div class="tagline">Fresh, Flavourful, Fabulous</div>
+    </div>
+    <nav>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        ☰
+      </button>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="order.html">Order</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="about-hero">
+      <h1>About Loveberry</h1>
+      <p>Bringing Authentic Nigerian Flavors to Your Table</p>
+    </section>
+
+    <section class="about-content">
+      <h2>Our Story</h2>
+      <p>
+        Founded in 2020, Loveberry started with a simple mission: to celebrate the rich culinary heritage of Nigeria and share it with the world.
+        We are passionate about using fresh, local ingredients and traditional recipes handed down through generations.
+      </p>
+
+      <h2>Our Philosophy</h2>
+      <p>
+        At Loveberry, food is more than just a meal  it’s an experience. We believe in creating dishes that connect people to culture, family, and community.
+        Every dish is prepared with care, love, and an eye for quality.
+      </p>
+
+      <h2>Meet the Team</h2>
+      <div class="team-grid">
+        <div class="team-member">
+          <img src="chef3.png" alt="Chef Ada" />
+          <h3>Chef Ada</h3>
+          <p>Head Chef & Recipe Creator</p>
+        </div>
+        <div class="team-member">
+          <img src="png.jpg" alt="Chef Emeka" />
+          <h3>Chef Emeka</h3>
+          <p>Sous Chef & Quality Control</p>
+        </div>
+        <div class="team-member">
+          <img src="chef77.png" alt="Tola" />
+          <h3>Tola</h3>
+          <p>Customer Relations Manager</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Loveberry Restaurant. Naija to the world!</p>
+  </footer>
+
+  <script>
+    // Navigation toggle (reuse same code)
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('nav ul');
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+    });
+  </script>
+</body>
+</html>
