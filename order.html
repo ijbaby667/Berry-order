@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loveberry | Order</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      Loveberry
+      <div class="tagline">Fresh, Flavourful, Fabulous</div>
+    </div>
+    <nav>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        ☰
+      </button>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="order.html" class="active">Order</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="order-intro">
+      <h1>Place Your Order</h1>
+      <p>Choose your favourite dishes and let us know your details. We'll prepare your meal with love and care.</p>
+    </section>
+
+    <section class="order-form-section">
+      <form class="order-form" id="orderForm" action="#" method="POST" novalidate>
+        <fieldset>
+          <legend>Personal Details</legend>
+
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Your full name" required />
+
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required />
+
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="+234 905 939 8498" required />
+        </fieldset>
+
+        <fieldset>
+          <legend>Your Order</legend>
+
+          <label for="dish">Select Dish</label>
+          <select id="dish" name="dish" required>
+            <option value="">-- Select a dish --</option>
+            <option value="jollof-rice" data-price="3000">Jollof Rice & Chicken (₦3,000)</option>
+            <option value="egusi-soup" data-price="4500">Egusi Soup (₦4,500)</option>
+            <option value="ofada-rice" data-price="3800">Ofada Rice & Ayamase (₦3,800)</option>
+            <option value="suya-skewers" data-price="1500">Suya Skewers (₦1,500)</option>
+            <option value="oha-soup" data-price="4000">Oha Soup (₦4,000)</option>
+            <option value="ewedu-gbegiri-amala" data-price="3500">Ewedu, Gbegiri & Amala (₦3,500)</option>
+            <option value="moi-moi" data-price="1200">Moi Moi (₦1,200)</option>
+          </select>
+
+          <label for="quantity">Quantity</label>
+          <input type="number" id="quantity" name="quantity" min="1" value="1" required />
+
+          <p><strong>Order Total: ₦<span id="order-total">0</span></strong></p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Delivery Details</legend>
+
+          <label for="address">Delivery Address</label>
+          <textarea id="address" name="address" rows="3" placeholder="Your delivery address" required></textarea>
+
+          <label for="delivery-time">Preferred Delivery Time</label>
+          <input type="time" id="delivery-time" name="delivery-time" />
+        </fieldset>
+
+        <button type="submit" class="btn">Submit Order</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Loveberry Restaurant. Naija to the world!</p>
+  </footer>
+
+  <script>
+    // Navigation toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('nav ul');
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+    });
+
+    // Elements
+    const dishSelect = document.getElementById('dish');
+    const quantityInput = document.getElementById('quantity');
+    const orderTotalDisplay = document.getElementById('order-total');
+    const orderForm = document.getElementById('orderForm');
+
+    // Calculate and display order total
+    function calculateTotal() {
+      const selectedOption = dishSelect.options[dishSelect.selectedIndex];
+      const price = selectedOption.dataset.price ? Number(selectedOption.dataset.price) : 0;
+      const quantity = Number(quantityInput.value) || 0;
+      const total = price * quantity;
+      orderTotalDisplay.textContent = total.toLocaleString();
+    }
+
+    // Save form data to localStorage
+    function saveFormData() {
+      const data = {
+        name: orderForm.name.value,
+        email: orderForm.email.value,
+        phone: orderForm.phone.value,
+        dish: orderForm.dish.value,
+        quantity: orderForm.quantity.value,
+        address: orderForm.address.value,
+        deliveryTime: orderForm['delivery-time'].value,
+      };
+      localStorage.setItem('loveberryOrderForm', JSON.stringify(data));
+    }
+
+    // Load form data from localStorage
+    function loadFormData() {
+      const saved = localStorage.getItem('loveberryOrderForm');
+      if (saved) {
+        const data = JSON.parse(saved);
+        orderForm.name.value = data.name || '';
+        orderForm.email.value = data.email || '';
+        orderForm.phone.value = data.phone || '';
+        orderForm.dish.value = data.dish || '';
+        orderForm.quantity.value = data.quantity || '1';
+        orderForm.address.value = data.address || '';
+        orderForm['delivery-time'].value = data.deliveryTime || '';
+      }
+      calculateTotal();
+    }
+
+    // Event listeners
+    dishSelect.addEventListener('change', () => {
+      calculateTotal();
+      saveFormData();
+    });
+
+    quantityInput.addEventListener('input', () => {
+      if (quantityInput.value < 1) quantityInput.value = 1;
+      calculateTotal();
+      saveFormData();
+    });
+
+    orderForm.addEventListener('input', saveFormData);
+
+    orderForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!orderForm.checkValidity()) {
+        alert('Please fill in all required fields correctly.');
+        return;
+      }
+      alert(`Thank you for your order! Your total is ₦${orderTotalDisplay.textContent}. We will contact you soon.`);
+      orderForm.reset();
+      localStorage.removeItem('loveberryOrderForm');
+      calculateTotal();
+    });
+
+    // Load saved data on page load
+    window.addEventListener('load', loadFormData);
+  </script>
+</body>
+</html>

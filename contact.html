@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loveberry | Contact</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      Loveberry
+      <div class="tagline">Fresh, Flavourful, Fabulous</div>
+    </div>
+    <nav>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        ☰
+      </button>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="order.html">Order</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="contact-intro">
+      <h1>Get in Touch</h1>
+      <p>We’d love to hear from you! Whether you have a question, feedback, or just want to say hello.</p>
+    </section>
+
+    <section class="contact-grid">
+      <div class="contact-info">
+        <h2>Contact Information</h2>
+        <p><strong>Phone:</strong> +234 905 939 8498</p>
+        <p><strong>Email:</strong> patrickijeoma450@gmail.com</p>
+        <p><strong>Location:</strong> 4th Avenue, Gwarinpa, Abuja</p>
+        <p><strong>Hours:</strong> Mon - Sun | 9:00 AM – 10:00 PM</p>
+      </div>
+
+      <div class="contact-form">
+        <h2>Send Us a Message</h2>
+        <form id="contactForm" action="#" method="POST" novalidate>
+          <label for="fullname">Full Name</label>
+          <input type="text" id="fullname" name="fullname" placeholder="Your name" required />
+
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required />
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Loveberry Restaurant. Naija to the world!</p>
+  </footer>
+
+  <script>
+    // Navigation toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('nav ul');
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+    });
+
+    // Contact form validation
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      if (!contactForm.checkValidity()) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+
+      alert('Message sent! We’ll get back to you shortly.');
+      contactForm.reset();
+    });
+  </script>
+</body>
+</html>

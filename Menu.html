@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loveberry | Menu</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      Loveberry
+      <div class="tagline">Fresh, Flavourful, Fabulous</div>
+    </div>
+    <nav>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        ☰
+      </button>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html" class="active">Menu</a></li>
+        <li><a href="order.html">Order</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="menu-intro">
+      <h1>Our Menu</h1>
+      <p>Discover the rich and diverse flavors of Nigerian cuisine, carefully prepared to delight your taste buds.</p>
+    </section>
+
+    <section class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="main">Main Dishes</button>
+      <button class="filter-btn" data-filter="sides">Soups & Sides</button>
+    </section>
+
+    <section class="menu-grid">
+      <!-- Main Dishes -->
+      <div class="menu-item main">
+        <img src="Jollof Rice with Chicken - Yummy Wonders.jpeg" alt="Jollof Rice & Chicken" />
+        <h3>Jollof Rice & Chicken</h3>
+        <p>Spiced tomato rice with grilled chicken and fried plantains</p>
+        <span class="price">₦3,000</span>
+      </div>
+      <div class="menu-item main">
+        <img src="egusi.jpeg" alt="Egusi Soup" />
+        <h3>Egusi Soup</h3>
+        <p>Rich melon seed soup with assorted meats</p>
+        <span class="price">₦4,500</span>
+      </div>
+      <div class="menu-item main">
+        <img src="Ofada Stew Recipe (How To Make Ofada Stew) - My Active Kitchen.jpeg" alt="Ofada Rice & Ayamase" />
+        <h3>Ofada Rice & Ayamase</h3>
+        <p>Local rice served with spicy green pepper stew</p>
+        <span class="price">₦3,800</span>
+      </div>
+      <div class="menu-item main">
+        <img src="Spicy Nigerian Beef Suya Recipe from Chef Lola's Kitchen.jpeg" alt="Suya Skewers" />
+        <h3>Suya Skewers</h3>
+        <p>Spicy grilled beef skewers served with onions and tomatoes</p>
+        <span class="price">₦1,200</span>
+      </div>
+
+      <!-- Soups & Sides -->
+      <div class="menu-item sides">
+        <img src="oha soup.jpg" alt="Oha Soup" />
+        <h3>Oha Soup</h3>
+        <p>A rich Igbo delicacy made with tender Oha leaves, cocoyam, palm oil, assorted meats, and native spices.</p>
+        <span class="price">₦3,500</span>
+      </div>
+      <div class="menu-item sides">
+        <img src="Yoruba traditional meal.jpeg" alt="Ewedu, Gbegiri & Amala" />
+        <h3>Ewedu, Gbegiri & Amala</h3>
+        <p>A Yoruba favorite combo! Stretchy amala served with silky ewedu soup, gbegiri (bean soup), and a spicy stew — full of bold, traditional flavor.</p>
+        <span class="price">₦4,500</span>
+      </div>
+      <div class="menu-item sides">
+        <img src="Moi Moi Recipe.jpeg" alt="Moi Moi" />
+        <h3>Moi Moi</h3>
+        <p>Steamed bean pudding with spices, Egg and fish</p>
+        <span class="price">₦1,000</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Loveberry Restaurant. Naija to the world!</p>
+  </footer>
+
+  <script>
+    // Navigation toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('nav ul');
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+    });
+
+    // Filter buttons
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const menuItems = document.querySelectorAll('.menu-item');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active to clicked
+        button.classList.add('active');
+
+        const filter = button.getAttribute('data-filter');
+
+        menuItems.forEach(item => {
+          if (filter === 'all') {
+            item.style.display = 'block';
+          } else {
+            if (item.classList.contains(filter)) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
